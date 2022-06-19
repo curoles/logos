@@ -1,0 +1,5 @@
+TheUniverse:
+  domain: physical
+  instance: universe__physical
+  desc: |
+    The universe.

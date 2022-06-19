@@ -6,7 +6,7 @@ def fixname(name: str) -> str:
 
 def str2pathlist(name: str) -> list[str]:
     """Name to Trie path list"""
-    return list(fixname(name))
+    return list(name.replace(' ', '_'))
 
 def str2path(name: str) -> pathlib.Path:
     return pathlib.Path(*str2pathlist(name))

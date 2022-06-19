@@ -1,0 +1,5 @@
+universe:
+  domain: physical
+  is: universe__general
+  desc: |
+    All existing matter and space considered as a whole.

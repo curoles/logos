@@ -2,24 +2,15 @@
 
 import sys
 import pathlib
+import argparse
 
 if __name__ == "__main__" and __package__ is None:
     sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent))
     __package__ = "db.txt"
 
 from . import trie
+from . import yml
 
-def main(args) -> None:
-    print("Insert file "+args.file.name+" into "+args.db)
-    if not pathlib.Path(args.db).is_dir():
-        print(args.db + " is not directory")
-        exit(1)
-    print(trie.str2path("hi_abc de   kl"))
-    print(trie.name2path("hi_abc de", "kl"))
-    print(trie.name2path("hi__abc  de", ["kl", "mk"]))
-    print(trie.filename("hi__abc  de", ["kl", "mk"]))
-
-import argparse
 
 def parse_argv(argv: list[str]):
     parser = argparse.ArgumentParser(description='Insert YAML file into DB.')
@@ -36,6 +27,17 @@ def parse_argv(argv: list[str]):
                        )
     args = parser.parse_args()
     return args
+
+def main(args) -> None:
+    print("Insert file "+args.file.name+" into "+args.db)
+    if not pathlib.Path(args.db).is_dir():
+        print(args.db + " is not directory")
+        exit(1)
+    #print(trie.str2path("hi_abc de   kl"))
+    #print(trie.name2path("hi_abc de", "kl"))
+    #print(trie.name2path("hi__abc  de", ["kl", "mk"]))
+    #print(trie.filename("hi__abc  de", ["kl", "mk"]))
+    yml.insert(args.file.name, args.db, args.force)
 
 if __name__ == "__main__":
     args = parse_argv(sys.argv)
