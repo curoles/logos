@@ -1,5 +1,4 @@
 TheUniverse:
-  domain: physical
-  instance: universe__physical
-  desc: |
+  ->is_instance: universe:physics
+  description: |
     The universe.
